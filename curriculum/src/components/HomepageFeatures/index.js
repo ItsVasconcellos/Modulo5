@@ -8,12 +8,11 @@ const FeatureList = [
     Image: require('@site/static/img/btg_fernando.jpeg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Durante o estágio, fui responsável por desenvolver o front-end em <code>react</code>, utilizando do design system da empressa. Além disso, participei na prototipação do figma e criação de componentes.
       </>
     ),
   },{
-    title: 'Iniciação Científica',
+    title: 'Iniciação Científica - PIBIC-EM',
     Image: require('@site/static/img/safetytracker.png').default,
     description: (
       <>
