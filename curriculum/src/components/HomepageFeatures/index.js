@@ -16,54 +16,50 @@ const FeatureList = [
     Image: require('@site/static/img/safetytracker.png').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Desenvolvi, com uma equipe de 4 pessoas, uma aplicação web para a previsão de acidentes em rodovias federais, com o uso de Machine Learning.
       </>
     ),
   },
   {
     title: 'Módulo 1 - Gameficação',
     href:"https://github.com/2023M1T9-Inteli/grupo2",
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Image: require('@site/static/img/grupo-cia-de-talentos.png').default,
     description: (
       <>
-        Jogo desenvolvido em <code>GDScript</code> para a Cia de Talentos, no qual o objetivo final 
+        Jogo desenvolvido em <code>GDScript</code> para a Cia de Talentos, no qual o objetivo final era o ensinamento de gestão de tempo.
       </>
     ),
   },
   {
     title: 'Módulo 2 - Página Web',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Image: require('@site/static/img/panpedia.jpg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Aplicação Web feita com <code>EJS, Javascript e HTML</code> para a centralização do metadados do banco de dados do Banco Pan.
       </>
     ),
   },
   {
     title: 'Módulo 3 - Machine Learning',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Image: require('@site/static/img/mobly.png').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Criação de um modelo de Machine Learning para a predição de venda de móveis conforme a época do ano.  
       </>
     ),
   },
   {
     title: 'Módulo 4 - IOT',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Image: require('@site/static/img/ipt.png').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Projeto em parceira com o IPT para a criação de uma célula de carga, capaz de detectar variações em estruturas civis. A célula foi feita utilizando esp32.
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description,href,Image}) {
+function Feature({title, description,href,Image}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
