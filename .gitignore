@@ -1,8 +1,8 @@
 # Dependencies
-/node_modules
+curriculum/node_modules
 
 # Production
-/build
+curriculum/build
 
 # Generated files
 .docusaurus
@@ -18,3 +18,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#Log 
+robo-semana3/src/pycache
+
+#Venv
+robo-semana3/venv
