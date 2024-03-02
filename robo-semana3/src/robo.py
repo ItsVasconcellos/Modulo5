@@ -18,8 +18,10 @@ class InteliArm(pydobot.Dobot):
 # Cria uma instância da classe ()
 robo = InteliArm(port="COM6", verbose=False)
 
+# Define a velocidade do robô
 robo.speed(150, 150)
 
+# Variável para controlar se o programa vai repetir
 programa = True
 
 while programa:
@@ -67,6 +69,6 @@ while programa:
     # Verifica a opção escolhida pelo usuário
     if continuar['continuar'] == 'Y':  programa = True
     else: programa = False 
-    
+
 # Fecha a conexão com o robô
 robo.close()
