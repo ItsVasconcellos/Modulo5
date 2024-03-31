@@ -4,7 +4,7 @@ Construção de Interface por Linha de Comando (CLI) para Controle do Robô
 
 ## Introdução
 
-Este projeto é uma aplicação CLI (Command Line Interface) desenvolvida em Python para controlar um robô, utilizando da biblioteca pydobot, possibilitando o uso de uma ferramenta de vácuo e movimentando o braço do robô.
+Este projeto é uma aplicação CLI (Command Line Interface) desenvolvida em Python para controlar um robô, utilizando da biblioteca pydobot, possibilitando o uso de uma ferramenta de vácuo e movimentando o braço do robô. Existe uma demo do protótipo disponível <a href="https://github.com/ItsVasconcellos/Modulo5/tree/master/robo-semana3"> nesse vídeo. </a>
 
 ## Requisitos
 
