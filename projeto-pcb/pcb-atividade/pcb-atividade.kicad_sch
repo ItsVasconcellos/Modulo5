@@ -2057,28 +2057,6 @@
 		)
 		(uuid 96274fce-36dc-4d9f-9525-33881651eef4)
 	)
-	(global_label "VCC_Generic"
-		(shape input)
-		(at 119.38 55.88 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "28829958-2b2b-42b0-915a-9198af653c55")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 134.0372 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "GPIO16"
 		(shape input)
 		(at 106.68 76.2 180)

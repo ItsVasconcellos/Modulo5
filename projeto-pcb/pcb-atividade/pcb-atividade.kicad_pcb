@@ -134,7 +134,7 @@
 		(descr "Resistor, Axial_DIN0414 series, Axial, Horizontal, pin pitch=15.24mm, 2W, length*diameter=11.9*4.5mm^2, http://www.vishay.com/docs/20128/wkxwrx.pdf")
 		(tags "Resistor Axial_DIN0414 series Axial Horizontal pin pitch 15.24mm 2W length 11.9mm diameter 4.5mm")
 		(property "Reference" "R1"
-			(at 7.62 -3.37 360)
+			(at 7.62 -3.37 0)
 			(layer "F.SilkS")
 			(uuid "b111ff7a-f7e2-4581-bc09-d78fc2cf2c4b")
 			(effects
@@ -145,7 +145,7 @@
 			)
 		)
 		(property "Value" "R220"
-			(at 7.62 3.37 360)
+			(at 7.62 3.37 0)
 			(layer "F.Fab")
 			(uuid "a17c0e4b-61fd-43a6-80c0-7c7e032f70bd")
 			(effects
@@ -357,7 +357,7 @@
 			(uuid "11ed58be-a9c0-48f1-9493-aac04eb64f16")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 7.62 0 360)
+			(at 7.62 0 0)
 			(layer "F.Fab")
 			(uuid "cd5486fe-ea21-4921-b92a-763ff492eae0")
 			(effects
@@ -2867,7 +2867,7 @@
 		(descr "TO-92 leads in-line, narrow, oval pads, drill 0.75mm (see NXP sot054_po.pdf)")
 		(tags "to-92 sc-43 sc-43a sot54 PA33 transistor")
 		(property "Reference" "Q1"
-			(at 1.27 -3.56 270)
+			(at 1.27 -3.56 -90)
 			(layer "F.SilkS")
 			(uuid "ae98f7e3-2b59-4bd8-a553-85df83a76bac")
 			(effects
@@ -2878,7 +2878,7 @@
 			)
 		)
 		(property "Value" "BC414"
-			(at 1.27 2.79 270)
+			(at 1.27 2.79 -90)
 			(layer "F.Fab")
 			(uuid "f28e4406-a517-4e57-9b57-0e30b6d12a07")
 			(effects
@@ -3034,7 +3034,7 @@
 			(uuid "4f1e4206-7936-4df3-819d-6263f727dca4")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 1.27 0 270)
+			(at 1.27 0 -90)
 			(layer "F.Fab")
 			(uuid "010f33af-3dbf-4dc5-8bd3-4978a932cbcb")
 			(effects
@@ -3329,7 +3329,7 @@
 			(uuid "c747d97b-4ae5-4b2c-951b-a8939303d725")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 1.905 270)
+			(at 0 1.905 -90)
 			(layer "F.Fab")
 			(uuid "1367c0dc-2108-40d9-8c54-636e72c21a72")
 			(effects
@@ -3635,7 +3635,7 @@
 			(uuid "21efda92-51ad-4b47-ada7-2186ec8f926b")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0.635 270)
+			(at 0 0.635 -90)
 			(layer "B.Fab")
 			(uuid "758d662b-f0b8-43c6-bf43-938e7a7abe42")
 			(effects
@@ -4135,7 +4135,7 @@
 		)
 		(polygon
 			(pts
-				(xy 62.5 39) (xy 63 109.5) (xy 162 109) (xy 162 39) (xy 162 39) (xy 162 39)
+				(xy 62.5 39) (xy 63 109.5) (xy 162 109) (xy 162 39)
 			)
 		)
 		(filled_polygon
