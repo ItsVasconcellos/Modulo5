@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.11"
+        integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <title>Testando o HTMX</title>
 </head>
-<body>
-    <!-- O botão vai fazer uma requisição post para o servidor -->
-    <button type="button" >
-        Ola Mundo
-    </button>
 
-    <div id="respostaServidor"></div>
+<body>
+    <div class="container is-widescreen">
+        <div class="columns is-half">
+            <div class="column is-half">
+                <form action="/move" method="post">
+                    <label class="label" for="x">X:</label>
+                    <input class="input" type="text" id="x" name="x"><br>
+
+                    <label class="label" for="y">Y:</label>
+                    <input class="input" type="text" id="y" name="y"><br>
+
+                    <label class="label" for="z">Z:</label>
+                    <input class="input" type="text" id="z" name="z"><br>
+
+                    <label class="label" for="r">Rotação:</label>
+                    <input class="input" type="text" id="r" name="r"><br>
+
+                    <button type="submit">Movimentar o robô</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

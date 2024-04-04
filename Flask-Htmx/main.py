@@ -16,27 +16,29 @@ class InteliArm(pydobot.Dobot):
     def movel_to(self, x, y, z, r, wait=True):
         super()._set_ptp_cmd(x, y, z, r, mode=pydobot.enums.PTPMode.MOVL_XYZ, wait=wait)
 
-try:
-    available_ports = list_ports.comports() 
-    port = available_ports[0].device
-except:
-    port = None
+def verifyRobotConnection():    
+    try:
+        available_ports = list_ports.comports() 
+        port = available_ports[0].device
+    except:
+        port = None
+    if port is not None:
+        # Cria uma instância da classe ()
+        robo = InteliArm(port=port, verbose=False)
+    elif port is None:
+        robo = None
+    return robo
 
-if port is not None:
-    # Cria uma instância da classe ()
-    robo = InteliArm(port=port, verbose=False)
-elif port is None:
-    robo = None
 
+robo = None
 app = Flask(__name__)
 db = TinyDB('db.json')
-
 CORS(app)
-
+verifyRobotConnection()
 
 @app.route("/")
 def index():
-    if robo is not None:
+    if (verifyRobotConnection is not None):
         return render_template("index.html")
     return "<h1> Como o robô não está conectado, nenhuma página pode ser acessada.</h1> <h3> Caso deseje, aqui está a página de <a href='localhost:8000/log'>logs</a>."
 
@@ -44,6 +46,25 @@ def index():
 def logs():
     logs = db.all()
     return render_template("logs.html",logs = logs)
+
+@app.route("/verifyConnection")
+def verifyConnection():
+    return verifyRobotConnection()
+
+@app.route("/position")
+def position():
+    print(robo.pose())
+
+@app.route("/move", methods=["POST"])
+def move():
+    verifyRobotConnection()
+    x = request.form['x']
+    y = request.form['y']
+    z = request.form['z']
+    r = request.form['r']
+    current = robo.pose()
+    robo.movej_to(x, y, current.z, r)
+    robo.movel_to(x,y,z,r)
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=8000)

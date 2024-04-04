@@ -1,0 +1,12 @@
+<table>
+    <tr>
+        <th>Eixo</th>
+        <th>Valor</th>
+    </tr>
+{% for position in positions %}
+    <tr>
+        <td>{position.axle}</td>
+        <td>{position.value}</td>
+    </tr>
+{% endfor %}
+</table>
