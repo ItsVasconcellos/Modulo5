@@ -78,6 +78,6 @@ def moveHome():
     db.insert({'Type': 'Move robot','Action':'Move to position Home','Date': datetime.now().strftime("%d/%m/%Y %H:%M:%S")})
     robo.movej_to(240.2, 0 , 150.5, 0, wait=True)
     return redirect("/movepage")
-
+    
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=8000)
