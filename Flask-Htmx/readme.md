@@ -48,6 +48,49 @@ Para rodar a aplicação, siga os passos abaixo:
 
 7. Acesse a aplicação no seu navegador através do seguinte endereço: `http://localhost:5000`.
 
+## Rotas
+
+```python
+[Get]/
+```
+Essa rota direciona para a SPA(Single Page Application), a qual contém a navbar
+
+
+
+```python
+[Get]/home
+```
+Essa rota renderiza a página Home, a qual contém informações iniciais sobre o projeto.
+
+
+```python
+[Get]/log
+```
+Responsável por renderizar a tabela contendo todos os logs da aplicação.
+
+
+```python
+[Get]/move-page
+```
+Responsável por renderizar a página, a qual permite controlar o robô. Só pode ser acessada se o robô estiver conectado no computador.
+
+
+```python
+[Post]/move
+body:{
+    "x" : number,
+    "y" : number,
+    "z" : number,
+    "r" : number,
+}
+```
+Recebe um body, contendo as coordenadas que o robô deve mover. Funciona apenas com formulários.
+
+```python
+[Get]/move-home
+```
+Move o robô para a posição definida já pré-definida.
+
 ## Interface
 
 #### Tela Principal
