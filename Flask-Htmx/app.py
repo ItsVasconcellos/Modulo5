@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect
 from flask_cors import CORS
 from tinydb import TinyDB
 from serial.tools import list_ports
+from datetime import datetime
 import pydobot 
 
 # Classe criada pelo professor, para permitir a utilização de movimento de juntas
@@ -16,24 +17,18 @@ class InteliArm(pydobot.Dobot):
     def movel_to(self, x, y, z, r, wait=True):
         super()._set_ptp_cmd(x, y, z, r, mode=pydobot.enums.PTPMode.MOVL_XYZ, wait=wait)
 
+robo = None
 def verifyRobotConnection():    
+    global robo
     try:
         available_ports = list_ports.comports() 
         port = available_ports[0].device
-    except:
-        port = None
-    if port is not None:
-        # Cria uma instância da classe ()
         robo = InteliArm(port=port, verbose=False)
-    elif port is None:
-        robo = None
-    return robo
-
-def position():
-    return robo.pose()
+        return robo
+    except:
+        return None
 
 
-robo = None
 app = Flask(__name__)
 db = TinyDB('db.json')
 CORS(app)
@@ -41,9 +36,10 @@ verifyRobotConnection()
 
 @app.route("/")
 def index():
-    if (verifyRobotConnection() is not None):
+    verifyRobotConnection()
+    if (robo is not None):
         print("teste") 
-        position = position()
+        position = robo.pose()
         return render_template("index.html")
     return render_template("index.html", coordinates = { "x":2,"y": 1,"z":3, "r":4})
 
@@ -54,15 +50,13 @@ def home():
 
 @app.route("/log")
 def logs():
-    return render_template("logs.html")
-
-@app.route("/verifyConnection")
-def verifyConnection():
-    return verifyRobotConnection()
+    logs = db.all()
+    return render_template("logs.html",logs = logs)
 
 @app.route("/move-page")
 def movePage():
-    if (verifyRobotConnection() is None):
+    verifyRobotConnection()
+    if (robo is not None):
         # db.insert()
         return render_template("positions.html")
     return redirect("/home")
@@ -70,18 +64,20 @@ def movePage():
 @app.route("/move", methods=["POST"])
 def move():
     verifyRobotConnection()
-    x = request.form['x']
-    y = request.form['y']
-    z = request.form['z']
-    r = request.form['r']
-    current = robo.pose()
-    robo.movej_to(x, y, current.z, r)
+    x = float(request.form['x'])
+    y = float(request.form['y'])
+    z = float(request.form['z'])
+    r = float(request.form['r'])
+    current = robo.pose() 
+    db.insert({'Type': 'Mover robot','Action':"Move to x = " + str(x) + "; y = " + str(y) + "; z =" + str(z) + "; r = " + str(r),'Date': datetime.now().strftime("%d/%m/%Y %H:%M:%S")})
+    robo.movej_to(x, y, current[2], r)
     robo.movel_to(x,y,z,r)
 
 @app.route("/move-home")
 def moveHome():
+    db.insert({'Type': 'Move robot','Action':'Move to position Home','Date': datetime.now().strftime("%d/%m/%Y %H:%M:%S")})
     robo.movej_to(240.2, 0 , 150.5, 0, wait=True)
-    return redirect("/home")
+    return redirect("/movepage")
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=8000)

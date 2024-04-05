@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <table class="table">
-        <thead>
-            <th>Tipo</th>
-            <th>Ação</th>
-            <th>Data</th>
-        </thead>
-    {% for log in logs %}
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-    {% endfor %}
-    </table>
+    <div class="container is-widescreen is-justify-content-center mt-6">
+        <div class="columns is-half">
+            <div class="column is-half">
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <th>Tipo</th>
+                        <th>Ação</th>
+                        <th>Data</th>
+                    </thead>
+                    {% for log in logs %}
+                    <tr>
+                        <td>{{log.Type}}</td>
+                        <td>{{log.Action}}</td>
+                        <td>{{log.Date}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
