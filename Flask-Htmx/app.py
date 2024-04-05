@@ -1,5 +1,5 @@
 # Módulos necessários para o funcionamento do código
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_cors import CORS
 from tinydb import TinyDB
 from serial.tools import list_ports
@@ -29,6 +29,9 @@ def verifyRobotConnection():
         robo = None
     return robo
 
+def position():
+    return robo.pose()
+
 
 robo = None
 app = Flask(__name__)
@@ -38,22 +41,31 @@ verifyRobotConnection()
 
 @app.route("/")
 def index():
-    if (verifyRobotConnection is not None):
+    if (verifyRobotConnection() is not None):
+        print("teste") 
+        position = position()
         return render_template("index.html")
-    return "<h1> Como o robô não está conectado, nenhuma página pode ser acessada.</h1> <h3> Caso deseje, aqui está a página de <a href='localhost:8000/log'>logs</a>."
+    return render_template("index.html", coordinates = { "x":2,"y": 1,"z":3, "r":4})
+
+@app.route("/home")
+def home():
+    return render_template("home.html")
+
 
 @app.route("/log")
 def logs():
-    logs = db.all()
-    return render_template("logs.html",logs = logs)
+    return render_template("logs.html")
 
 @app.route("/verifyConnection")
 def verifyConnection():
     return verifyRobotConnection()
 
-@app.route("/position")
-def position():
-    print(robo.pose())
+@app.route("/move-page")
+def movePage():
+    if (verifyRobotConnection() is None):
+        # db.insert()
+        return render_template("positions.html")
+    return redirect("/home")
 
 @app.route("/move", methods=["POST"])
 def move():
@@ -65,6 +77,11 @@ def move():
     current = robo.pose()
     robo.movej_to(x, y, current.z, r)
     robo.movel_to(x,y,z,r)
+
+@app.route("/move-home")
+def moveHome():
+    robo.movej_to(240.2, 0 , 150.5, 0, wait=True)
+    return redirect("/home")
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=8000)

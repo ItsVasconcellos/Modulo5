@@ -1,0 +1,29 @@
+<div class="container is-widescreen is-justify-content-center mt-6">
+    <div class="columns is-half">
+        <div class="column is-half">
+            <form  hx-post="/move">
+                <label class="label" for="x">X:</label>
+                <input class="input" type="text" id="x" name="x">
+
+                <label class="label" for="y">Y:</label>
+                <input class="input" type="text" id="y" name="y"><br>
+
+                <label class="label" for="z">Z:</label>
+                <input class="input" type="text" id="z" name="z"><br>
+
+                <label class="label" for="r">Rotação:</label>
+                <input class="input" type="text" id="r" name="r"><br>
+
+                <button class="button is-primary mt-3" type="submit">Movimentar o robô para a posição</button>
+                <button class="button is-info mt-3"  hx-get="http://localhost:5000/move-home" hx-trigger="click">Movimentar para home</button>
+            </form>
+        </div>
+        <div class="column is-half">
+            <table class="table">
+                {% for coord in coordinates %}
+                    <th >{{coord}}</th>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>

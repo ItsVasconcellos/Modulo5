@@ -11,27 +11,28 @@
     <title>Testando o HTMX</title>
 </head>
 
-<body>
-    <div class="container is-widescreen">
-        <div class="columns is-half">
-            <div class="column is-half">
-                <form action="/move" method="post">
-                    <label class="label" for="x">X:</label>
-                    <input class="input" type="text" id="x" name="x"><br>
-
-                    <label class="label" for="y">Y:</label>
-                    <input class="input" type="text" id="y" name="y"><br>
-
-                    <label class="label" for="z">Z:</label>
-                    <input class="input" type="text" id="z" name="z"><br>
-
-                    <label class="label" for="r">Rotação:</label>
-                    <input class="input" type="text" id="r" name="r"><br>
-
-                    <button type="submit">Movimentar o robô</button>
-                </form>
-            </div>
+<body class="has-text-white">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://github.com/ItsVasconcellos"><img src="../static/"></a>
         </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" hx-get="http://localhost:5000/home" hx-trigger="click, load" hx-target = "#content">
+              Home
+            </a>
+      
+            <a class="navbar-item" hx-get="http://localhost:5000/log" hx-trigger="click" hx-target = "#content">
+              Logs
+            </a>
+            
+            <a class="navbar-item" hx-get="http://localhost:5000/move-page" hx-trigger="click" hx-target = "#content">
+                Mover Item
+              </a>
+        </div>
+    </nav>
+    <div id="content">
     </div>
 </body>
 
